@@ -11,6 +11,7 @@ const RootQueryType =  new GraphQLObjectType({
   fields:{
     hello:{ // accept a hello query on top of the graph 
       type : GraphQLString , 
+      description: "graphql mandatory hello world" , 
       resolve : () => "World"
     }
   }
