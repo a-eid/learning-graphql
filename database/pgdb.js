@@ -9,6 +9,5 @@ module.exports = (ctx) => ({
   `, [key]).then( r => humps.camelizeKeys(r.rows[0]))  , 
 
   getAllUsers:() => ctx.query(`
-  select* from users `).then(results => results.rows.map( row => humps.camelizeKeys(row) ))
-
+  select* from users `).then(results => humps.camelizeKeys(results.rows) ) , 
 })
