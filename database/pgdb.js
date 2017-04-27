@@ -10,4 +10,8 @@ module.exports = (ctx) => ({
 
   getAllUsers:() => ctx.query(`
   select* from users `).then(results => humps.camelizeKeys(results.rows) ) , 
+
+  getContests:(user) => ctx.query(`
+    select * from contests where created_by = $1   
+  `, [user.id]).then( r => humps.camelizeKeys( r.rows ))
 })
