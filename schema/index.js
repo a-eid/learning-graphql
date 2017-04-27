@@ -1,26 +1,13 @@
-// define the schema for graphql 
+// helper types from 'graphql' .. 
 const {
   GraphQLSchema ,
-  GraphQLObjectType , 
-  GraphQLString 
 } = require('graphql') 
 
-// root query is where the graph starts . 
-const RootQueryType =  new GraphQLObjectType({
-  name: 'RootQueryType' , // name can be anything . 
-  fields:{
-    hello:{ // accept a hello query on top of the graph 
-      type : GraphQLString , 
-      description: "graphql mandatory hello world" , 
-      resolve : () => "World"
-    }
-  }
-})
+// import types 
+const RootQueryType = require('./types/root')
 
-const ncSchema = new GraphQLSchema({
-  query: RootQueryType 
-  // mutation: ... later 
+// define the schema ..
+module.exports  = new GraphQLSchema({
+  query: RootQueryType
+  // mutation: ... 
 })
-
-// export the schema 
-module.exports = ncSchema
